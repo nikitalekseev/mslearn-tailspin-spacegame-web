@@ -1,3 +1,4 @@
+[![Build Status](https://dev.azure.com/nktlksv/Space%20Game%20Learn/_apis/build/status/nikitalekseev.mslearn-tailspin-spacegame-web?branchName=master)](https://dev.azure.com/nktlksv/Space%20Game%20Learn/_build/latest?definitionId=3&branchName=master)
 
 # Contributing
 
