@@ -17,18 +17,15 @@ steps:
   inputs:
     version: '$(dotnetSdkVersion)'
 
-<<<<<<< HEAD
 - task: NuGetToolInstaller@0
   inputs:
     versionSpec: '5.4.0' 
 
-=======
 - task: UseDotNet@2
   displayName: 'Use .NET Core SDK 2.1.505 for SonarCloud'
   inputs:
     version: '2.1.505'
     
->>>>>>> master
 - task: Npm@1
   displayName: 'Run npm install'
   inputs:
@@ -41,7 +38,6 @@ steps:
   displayName: 'Run gulp tasks'
 
 - script: 'echo "$(Build.DefinitionName), $(Build.BuildId), $(Build.BuildNumber)" > buildinfo.txt'
-<<<<<<< HEAD
   displayName: 'Write build information'
   workingDirectory: $(wwwrootDir)
 
@@ -52,16 +48,6 @@ steps:
     restoreSolution: '**/*.sln'
     feedsToUse: 'select'
     vstsFeed: 'Space Game Learn/Tailspin.SpaceGame.Web.Models'
-
-=======
-  displayName: 'Write build info'
-  workingDirectory: $(wwwrootDir)
-
-- task: DotNetCoreCLI@2
-  displayName: 'Restore project dependencies'
-  inputs:
-    command: 'restore'
-    projects: '**/*.csproj'
 
 - task: SonarCloudPrepare@1
   displayName: 'Prepare SonarCloud analysis'
@@ -82,15 +68,12 @@ steps:
       eq(variables['System.PullRequest.TargetBranch'], 'master')
     )
     
->>>>>>> master
 - task: DotNetCoreCLI@2
   displayName: 'Build the project - $(buildConfiguration)'
   inputs:
     command: 'build'
     arguments: '--no-restore --configuration $(buildConfiguration)'
     projects: '**/*.csproj'
-<<<<<<< HEAD
-=======
     
 - task: DotNetCoreCLI@2
   displayName: 'Install ReportGenerator'
@@ -146,7 +129,6 @@ steps:
       eq(variables['Build.Reason'], 'PullRequest'),
       eq(variables['System.PullRequest.TargetBranch'], 'master')
     )
->>>>>>> master
 
 - task: DotNetCoreCLI@2
   displayName: 'Publish the project - $(buildConfiguration)'
@@ -159,8 +141,4 @@ steps:
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: drop'
-<<<<<<< HEAD
   condition: succeeded()
-=======
-  condition: succeeded()
->>>>>>> master
